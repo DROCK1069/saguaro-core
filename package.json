@@ -1,0 +1,29 @@
+{
+  "name": "@saguaro/core",
+  "version": "0.1.0",
+  "description": "Saguaro shared calculation engine — the single source of truth for all money & quantity math, consumed by the web dashboard (saguaro-crm) and the native field app (saguaro-field). AI extracts/judges; this engine computes. Deterministic, integer-cents, tested.",
+  "license": "UNLICENSED",
+  "private": true,
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": ["dist"],
+  "exports": {
+    ".": { "types": "./dist/index.d.ts", "default": "./dist/index.js" },
+    "./money": { "types": "./dist/money.d.ts", "default": "./dist/money.js" },
+    "./units": { "types": "./dist/units.d.ts", "default": "./dist/units.js" },
+    "./payapp": { "types": "./dist/payapp.d.ts", "default": "./dist/payapp.js" },
+    "./changeOrder": { "types": "./dist/changeOrder.d.ts", "default": "./dist/changeOrder.js" },
+    "./takeoff": { "types": "./dist/takeoff.d.ts", "default": "./dist/takeoff.js" },
+    "./sanity": { "types": "./dist/sanity.d.ts", "default": "./dist/sanity.js" }
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "test": "tsx src/calc.test.ts",
+    "typecheck": "tsc -p tsconfig.build.json --noEmit"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "tsx": "^4.7.0",
+    "typescript": "^5.4.0"
+  }
+}
