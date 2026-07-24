@@ -14,11 +14,21 @@
     "./payapp": { "types": "./dist/payapp.d.ts", "default": "./dist/payapp.js" },
     "./changeOrder": { "types": "./dist/changeOrder.d.ts", "default": "./dist/changeOrder.js" },
     "./takeoff": { "types": "./dist/takeoff.d.ts", "default": "./dist/takeoff.js" },
-    "./sanity": { "types": "./dist/sanity.d.ts", "default": "./dist/sanity.js" }
+    "./payroll": { "types": "./dist/payroll.d.ts", "default": "./dist/payroll.js" },
+    "./sanity": { "types": "./dist/sanity.d.ts", "default": "./dist/sanity.js" },
+    "./dates": { "types": "./dist/dates.d.ts", "default": "./dist/dates.js" },
+    "./franchise": { "types": "./dist/franchise.d.ts", "default": "./dist/franchise.js" },
+    "./franchiseTriage": { "types": "./dist/franchiseTriage.d.ts", "default": "./dist/franchiseTriage.js" },
+    "./portfolioHealth": { "types": "./dist/portfolioHealth.d.ts", "default": "./dist/portfolioHealth.js" },
+    "./projectContract": { "types": "./dist/projectContract.d.ts", "default": "./dist/projectContract.js" },
+    "./submittal": { "types": "./dist/submittal.d.ts", "default": "./dist/submittal.js" },
+    "./priority": { "types": "./dist/priority.d.ts", "default": "./dist/priority.js" },
+    "./retainage": { "types": "./dist/retainage.d.ts", "default": "./dist/retainage.js" },
+    "./formatMoney": { "types": "./dist/formatMoney.d.ts", "default": "./dist/formatMoney.js" }
   },
   "scripts": {
     "build": "tsc -p tsconfig.build.json",
-    "test": "tsx src/calc.test.ts",
+    "test": "tsx src/calc.test.ts && tsx src/v2.test.ts",
     "typecheck": "tsc -p tsconfig.build.json --noEmit"
   },
   "devDependencies": {

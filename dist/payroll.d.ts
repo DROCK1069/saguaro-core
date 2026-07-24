@@ -1,0 +1,38 @@
+/**
+ * Certified-payroll wage math (DOL WH-347 / Davis-Bacon prevailing wage).
+ * Single source of truth for a worker's gross wages over a payroll period,
+ * computed in exact integer cents. Three statutory tiers:
+ *   straight time @ base · overtime @ 1.5× base · double time @ 2× base.
+ * Fringe benefits are a SEPARATE identity — never folded into gross wages
+ * (WH-347 reports fringe in its own column). Callers/AI classify hours into
+ * tiers; this engine does the money, so web + native cross-foot to the cent.
+ */
+import { Cents } from './money';
+/** Statutory FLSA / Davis-Bacon overtime multiplier (time-and-a-half). */
+export declare const OT_MULTIPLIER = 1.5;
+/** Statutory double-time multiplier. */
+export declare const DT_MULTIPLIER = 2;
+/** Hours already classified into pay tiers for one worker over a period. */
+export interface PayrollHours {
+    stHours: number;
+    otHours: number;
+    dtHours: number;
+}
+/**
+ * Gross wages for one worker: ST @ base + OT @ 1.5× + DT @ 2×, in exact cents.
+ * `baseRateCents` is the straight-time hourly rate in integer cents (run a
+ * dollar rate through money.toCents first). Each tier's extended cost is
+ * rounded to the cent independently and then summed — matching the canonical
+ * web certified-payroll screen exactly.
+ */
+export declare function payrollGross(stHours: number, otHours: number, dtHours: number, baseRateCents: Cents): Cents;
+/** {@link payrollGross} taking a pre-classified {@link PayrollHours} bundle. */
+export declare const payrollGrossOf: (h: PayrollHours, baseRateCents: Cents) => Cents;
+/**
+ * Fringe-benefit dollars for one worker: paid on ALL hours worked
+ * (ST + OT + DT) at the flat fringe hourly rate, in exact cents. Kept apart
+ * from gross wages per WH-347 — fringe has its own column and is never part
+ * of the gross-wage figure.
+ */
+export declare function payrollFringe(totalHours: number, fringeRateCents: Cents): Cents;
+//# sourceMappingURL=payroll.d.ts.map
