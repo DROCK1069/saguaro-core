@@ -57,7 +57,8 @@ exports.PRIORITY_RANK = {
     high: 2,
     critical: 3,
 };
-/** { value, label } list for dropdowns / pickers, ascending low -> critical. */
+/** { value, label } list for dropdowns / pickers, ascending low -> critical.
+ *  Mutable-typed so it drops straight into a SelectField `options` prop. */
 exports.PRIORITY_OPTIONS = exports.PRIORITIES.map((p) => ({ value: p, label: exports.PRIORITY_LABELS[p] }));
 /**
  * Live synonyms seen in the DB and older surfaces, folded onto the canon:

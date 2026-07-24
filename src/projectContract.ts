@@ -40,7 +40,8 @@ export interface ProjectLike {
   total_contract_amount?: number | string | null;
   contract_amount?: number | string | null;
   contract_sum?: number | string | null;
-  [key: string]: unknown;
+  // No index signature — so concrete app Project types stay structurally assignable
+  // (an index signature would force every caller's type to declare one too).
 }
 
 /**
@@ -75,8 +76,9 @@ function coerceAmount(v: unknown): number | null {
 
 /** First strictly-positive value among the given keys, else null. */
 function firstPositive(p: ProjectLike, keys: readonly string[]): number | null {
+  const rec = p as Record<string, unknown>;
   for (const k of keys) {
-    const n = coerceAmount(p[k]);
+    const n = coerceAmount(rec[k]);
     if (n !== null && n > 0) return n;
   }
   return null;

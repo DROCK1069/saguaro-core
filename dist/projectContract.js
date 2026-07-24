@@ -65,8 +65,9 @@ function coerceAmount(v) {
 }
 /** First strictly-positive value among the given keys, else null. */
 function firstPositive(p, keys) {
+    const rec = p;
     for (const k of keys) {
-        const n = coerceAmount(p[k]);
+        const n = coerceAmount(rec[k]);
         if (n !== null && n > 0)
             return n;
     }

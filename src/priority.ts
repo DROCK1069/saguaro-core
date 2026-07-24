@@ -63,8 +63,9 @@ export const PRIORITY_RANK: Record<Priority, number> = {
   critical: 3,
 };
 
-/** { value, label } list for dropdowns / pickers, ascending low -> critical. */
-export const PRIORITY_OPTIONS: ReadonlyArray<{ value: Priority; label: string }> =
+/** { value, label } list for dropdowns / pickers, ascending low -> critical.
+ *  Mutable-typed so it drops straight into a SelectField `options` prop. */
+export const PRIORITY_OPTIONS: { value: Priority; label: string }[] =
   PRIORITIES.map((p) => ({ value: p, label: PRIORITY_LABELS[p] }));
 
 /**

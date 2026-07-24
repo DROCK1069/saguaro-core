@@ -41,11 +41,12 @@ export type PriorityTone = 'neutral' | 'blue' | 'amber' | 'red';
 export declare const PRIORITY_TONE: Record<Priority, PriorityTone>;
 /** Ascending severity rank (low = 0 ... critical = 3) for sorting / comparison. */
 export declare const PRIORITY_RANK: Record<Priority, number>;
-/** { value, label } list for dropdowns / pickers, ascending low -> critical. */
-export declare const PRIORITY_OPTIONS: ReadonlyArray<{
+/** { value, label } list for dropdowns / pickers, ascending low -> critical.
+ *  Mutable-typed so it drops straight into a SelectField `options` prop. */
+export declare const PRIORITY_OPTIONS: {
     value: Priority;
     label: string;
-}>;
+}[];
 /** Type guard: is this exactly a canonical (lowercase) priority value? */
 export declare function isPriority(value: unknown): value is Priority;
 /**

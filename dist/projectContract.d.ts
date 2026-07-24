@@ -38,7 +38,6 @@ export interface ProjectLike {
     total_contract_amount?: number | string | null;
     contract_amount?: number | string | null;
     contract_sum?: number | string | null;
-    [key: string]: unknown;
 }
 /**
  * Columns that hold the REVISED contract (original + approved COs), highest
